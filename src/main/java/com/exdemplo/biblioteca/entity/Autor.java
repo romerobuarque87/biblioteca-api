@@ -13,21 +13,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "categorias")
+@Table(name = "autores")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Categoria {
+public class Autor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
-    @Size(max = 100)
-    @Column(nullable = false, length = 100)
+    @Size(max = 150)
+    @Column(nullable = false, length = 150)
     private String nome;
 
-    @Column(length = 255)
-    private String descricao;
+    @Size(max = 100)
+    @Column(length = 100)
+    private String nacionalidade;
 }

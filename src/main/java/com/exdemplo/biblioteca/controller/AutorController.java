@@ -6,25 +6,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.exdemplo.biblioteca.entity.Categoria;
-import com.exdemplo.biblioteca.repository.CategoriaRepository;
+import com.exdemplo.biblioteca.entity.Autor;
+import com.exdemplo.biblioteca.repository.AutorRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/v1/categorias")
+@RequestMapping("/api/v1/autores")
 @RequiredArgsConstructor
-public class CategoriaController {
+public class AutorController {
 
-    private final CategoriaRepository repository;
+    private final AutorRepository repository;
 
     @GetMapping
-    public ResponseEntity<Iterable<Categoria>> listar() {
+    public ResponseEntity<Iterable<Autor>> listar() {
         return ResponseEntity.ok(repository.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Categoria> buscarPorId(@PathVariable Long id) {
+    public ResponseEntity<Autor> buscarPorId(@PathVariable Long id) {
         return repository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
